@@ -1,0 +1,119 @@
+.html, .body{
+  height: 100vh;
+  margin: 0;
+  font-family: 'Varela', sans-serif;
+}
+
+.grades{
+  font-family: 'Varela', sans-serif;
+  font-size: 1.0rem;
+}
+
+.left-side, .right-side{
+  display: block;
+  height: 100vh;
+}
+.left-side{
+  display: inline-block;
+  background-color: #e1d8cf;
+  width: 30%;
+  max-width: 200px;
+}
+
+.myimage{
+  display: block;
+  width: 90px;
+  margin: 15px auto;
+  margin-top: 15px auto;
+  border-radius: 50%;
+}
+
+h2{
+  background: rgb(52,58,64);
+  color: #ddd8d2;
+  font-size: 1rem;
+  text-align: center;
+  margin:5px;
+  padding: 2px;
+}
+
+
+.html, .body {
+  height: 100vh;
+  margin: 0;
+  font-size: 12px;
+}
+.body {
+  overflow: hidden;
+  display: flex;
+}
+* {
+  box-sizing: border-box;
+}
+.left-side,
+.right-side {
+  display: inline-block;
+  height: 100vh;
+}
+/*****************************/
+/******** Left Side **********/
+/*****************************/
+.left-side {
+  background: #e1d8cf;
+  width: 30%;
+  max-width: 180px;
+  padding: 15px;
+}
+.avatar {
+  height: 130px;
+  border-radius: 50%;
+  margin: 15px auto 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.info-box h2 {
+  background: rgb(52,58,64);
+  color: #e1d8cf;
+  font-size: 1rem;
+  padding: 6px;
+}
+.info-box p {
+  font-size: 1rem;
+  padding: 4px;
+}
+/*****************************/
+/******* Right Side **********/
+/*****************************/
+.right-side {
+  width: 100%;
+}
+.right-side header {
+  background: rgb(52,58,64);
+  color: #e1d8cf;
+  height: 150px;
+  margin-top: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.right-side header * {
+  text-align: center;
+  margin: 0;
+}
+.right-side header h1 {
+  font-size: 2.5rem;
+}
+.right-side header h6 {
+  font-size: 1.4rem;
+}
+
+.right-side .content{
+  height: 100%;
+  overflow: auto;
+}
+
+
+p{
+  font-family: 'Varela', sans-serif;
+}

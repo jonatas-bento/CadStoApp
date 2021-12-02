@@ -1,0 +1,111 @@
+<div class="aluno-edit">
+    <h1 style="font-weight: 800; margin-top: 50px;">{{title}}</h1>
+
+    <p *ngIf="this.id && !aluno"><em>Carregando...</em></p>
+
+    <div class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="nome">Nome do Aluno: </label>
+        <br />
+        <input type="text" id="nome"
+              formControlName="nome" required
+              placeholder="Nome aluno..."
+              class="form-control" />
+      </div>
+
+      <div *ngIf="form.get('nome').invalid && (form.get('nome').dirty || form.get('nome').touched)"
+      class="invalid-feedback">
+        <div *ngIf="form.get('nome').erros?.required">
+          Nome é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="periodo">Período: </label>
+        <br />
+        <input type="text" id="periodo"
+              formControlName="periodo" required
+              placeholder="Período..."
+              class="form-control" />
+      </div>
+
+      <div *ngIf="form.get('periodo').invalid && (form.get('periodo').dirty || form.get('periodo').touched)"
+      class="invalid-feedback">
+        <div *ngIf="form.get('periodo').erros?.required">
+          Período é obrigatório.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="av1">Primeira Avaliação (Av1): </label>
+        <br />
+        <input type="text" id="av1"
+              formControlName="av1" required
+              placeholder="Av1..."
+              class="form-control" />
+      </div>
+
+      <div *ngIf="form.get('av1').invalid && (form.get('av1').dirty || form.get('av1').touched)"
+      class="invalid-feedback">
+        <div *ngIf="form.get('av1').erros?.required">
+          Avaliações são obrigatórias.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="av2">Segunda Avaliação (Av2): </label>
+        <br />
+        <input type="text" id="av2"
+              formControlName="av2" required
+              placeholder="Av2..."
+              class="form-control" />
+      </div>
+
+      <div *ngIf="form.get('av2').invalid && (form.get('av2').dirty || form.get('av2').touched)"
+      class="invalid-feedback">
+        <div *ngIf="form.get('av2').erros?.required">
+          Avaliações são obrigatórias.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="bonus">Bônus: </label>
+        <br />
+        <input type="text" id="bonus"
+              formControlName="bonus"
+              placeholder="Caso possua bonus..."
+              class="form-control" />
+      </div>
+
+      <div *ngIf="form.get('bonus').invalid && (form.get('bonus').dirty || form.get('bonus').touched)"
+      class="invalid-feedback">
+        <div *ngIf="form.get('bonus').erros?.required">
+          Avaliações são obrigatórias.
+        </div>
+      </div>
+
+      <div class="form-group commands">
+        <button *ngIf="id" type="submit"
+          (click)="onSubmit()"
+          [disabled]="form.invalid"
+          class="btn btn-success">
+          Salvar
+        </button>
+
+        <button *ngIf="!id" type="submit"
+          (click)="onSubmit()"
+          [disabled]="form.invalid"
+          class="btn btn-success"
+          style="margin-left: 3px;">
+          Adicionar
+        </button>
+
+        <button type="button"
+          [routerLink]="['/alunos']"
+          class="btn">
+          Cancelar
+        </button>
+      </div>
+    </div>
+</div>

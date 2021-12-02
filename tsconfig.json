@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "http://localhost:5000",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

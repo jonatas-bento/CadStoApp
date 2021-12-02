@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand pl-5" href="/">
+    <img class="logo"
+           src="http://localhost:5000/img/logo-site-1.png"
+           alt="Logo" />
+  </a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <app-login-menu></app-login-menu>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto pr-5">
+      <li class="nav-item active pl-3 pr-3">
+        <a class="nav-link" style="font-family: 'Varela Round', sans-serif;" [routerLink]="['/listaAlunos']">Lista de Alunos</a>
+      </li>
+      <li class="nav-item active pl-3 pr-3">
+        <a class="nav-link" style="font-family: 'Varela Round', sans-serif;" [routerLink]="['/disciplinas']">Disciplinas</a>
+      </li>
+      <!-- <li class="nav-item pl-3 pr-3" [routerLinkActive]="['link-active']">
+        <a class="nav-link" style="font-family: 'Varela Round', sans-serif;">Alunos</a>
+      </li> -->
+      <li ngbDropdown class="nav-item dropdown pl-3 pr-3">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle"
+        style="font-family: 'Varela Round', sans-serif;"
+
+           id="navbarDropdown"
+           role="button"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false">
+          Boletim
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown" style="text-align: center;">
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/primeiroPeriodo']">1º Periodo</a>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/segundoPeriodo']">2º Período</a>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/sextoPeriodo']">6º Período</a>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/oitavoPeriodo']">8º Período</a>
+          <div class="dropdown-divider"></div>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/alunos']">Geral</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,75 @@
+<div class="html">
+  <div class="body">
+
+
+<div class="left-side">
+  <figure class="avatar">
+  <img class="myimage"
+  src="http://localhost:5000/img/{{this.nomeFoto}}"
+  title="Minha Imagem de perfil"
+  />
+  </figure>
+  <h2>Informações Acadêmicas</h2>
+  <p style="text-align: center;">Aluno do {{this.periodo}} período. Realizando a disciplina de Teologia Bíblica do Antigo Testamento</p>
+  <h2>Disciplina Avaliada</h2>
+  <p style="text-align: center;">{{this.disciplina}}</p>
+
+</div>
+
+<div class="right-side">
+  <header>
+      <h1>{{this.nome}}</h1>
+      <h6 style="padding-top: 20px;">{{this.periodo}} - Período</h6>
+  </header>
+
+  <div class="content">
+
+
+      <aside class="info-box">
+          <h2>Comentários</h2>
+          <p>
+              {{this.comentarios}}
+          </p>
+      </aside>
+      <aside>
+          <h2>Avaliações</h2>
+          <div class="grades" style="display: flex; justify-content: center;">
+          <p>
+              Nota da Av1 = {{this.av1}}
+          </p>
+          <p style="margin-right: 50px; margin-left: 50px;">
+              Nota da Av2 = {{this.av2}}
+          </p>
+          <p>
+              Bonus = {{this.bonus}}
+          </p>
+        </div>
+      </aside>
+      <aside class="info-box">
+          <h2>Média Final e Status</h2>
+        <div class="grades" style="display: flex; justify-content: center;">
+          <p style="margin-right: 50px;">
+            Nota Final =  {{this.notaFinal}}
+          </p>
+          <p>
+            Status = {{this.status}}
+          </p>
+        </div>
+        </aside>
+        <aside class="info-box">
+          <h2>Participação nos fóruns</h2>
+          <p>
+            .....
+          </p>
+        </aside>
+        <aside class="info-box">
+          <h2>Participação em Sala de Aula</h2>
+          <p>
+            ......
+          </p>
+        </aside>
+
+
+</div>
+</div>
+</div>
