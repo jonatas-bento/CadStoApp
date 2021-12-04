@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Inject, OnInit } from "@angular/core";
 import { Aluno } from "./aluno";
-import { faEdit } from '@fortawesome/free-regular-svg-icons';
+import { faEdit, faAddressBook } from '@fortawesome/free-regular-svg-icons';
 import { concatMap, filter, map } from "rxjs/operators";
 import { AlunosService } from "../../alunos.service";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -15,6 +15,7 @@ export class AlunosComponent implements OnInit {
    'notaFinal', 'status', 'acoes'];
   public alunos: Aluno[];
   faEdit = faEdit;
+  faAddressBook = faAddressBook;
 
   constructor(
     private http: HttpClient,

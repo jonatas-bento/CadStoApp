@@ -25,8 +25,10 @@ import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListadeAlunosComponent } from './alunos/detalhamento/ListadeAlunos/ListadeAlunos.component';
 
-
-
+import { ApiAuthorizationModule } from '../api-authorization/api-authorization.module';
+import { AuthorizeInterceptor } from '../api-authorization/authorize.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
 
 
 @NgModule({
@@ -41,12 +43,13 @@ import { ListadeAlunosComponent } from './alunos/detalhamento/ListadeAlunos/List
     SegundoPeriodoComponent,
     SextoPeriodoComponent,
     OitavoPeriodoComponent,
+    PorBimestreComponent,
     DisciplinasComponent,
     FooterComponent,
     ListadeAlunosComponent
    ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -54,7 +57,8 @@ import { ListadeAlunosComponent } from './alunos/detalhamento/ListadeAlunos/List
     AngularMaterialModule,
     BrowserAnimationsModule,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FontAwesomeModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

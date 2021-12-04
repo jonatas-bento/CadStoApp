@@ -11,6 +11,7 @@ import { DetalhamentoComponent } from './alunos/detalhamento/detalhamento.compon
 import { EditComponent } from './alunos/edit/edit.component';
 import { PrimeiroPeriodoComponent } from './alunos/primeiroPeriodo/primeiroPeriodo.component';
 import { DisciplinasComponent } from './disciplinas/disciplinas.component';
+import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'sextoPeriodo', component: SextoPeriodoComponent, pathMatch: 'full'},
   { path: 'oitavoPeriodo', component: OitavoPeriodoComponent, pathMatch: 'full'},
   { path: 'disciplinas', component: DisciplinasComponent, pathMatch: 'full'},
-  { path: 'listaAlunos', component: ListadeAlunosComponent, pathMatch: 'full'}
+  { path: 'listaAlunos', component: ListadeAlunosComponent, pathMatch: 'full'},
+  { path: 'porBimestre', component: PorBimestreComponent, pathMatch: 'full'}
+
 ];
 
 @NgModule({
