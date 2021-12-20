@@ -31,19 +31,19 @@ faAdressBook = faAddressBook;
     ()=> this.spinner.hide();
   }
 
-media(a: number, b: number, c?: number) {
-  let resultado = a+b+c;
-  return resultado > 10 ? resultado = 10 : resultado;
-}
+// media(a: number, b: number, c?: number) {
+//   let resultado = a+b+c;
+//   return resultado > 10 ? resultado = 10 : resultado;
+// }
 
-status(media){
-  if(!media)
-  return '-';
-  if(media >= 6){
-    return 'APROVADO';
-  } else {
-    return 'REPROVADO';
-  }
-}
+// status(media){
+//   if(!media)
+//   return '-';
+//   if(media >= 6){
+//     return 'APROVADO';
+//   } else {
+//     return 'REPROVADO';
+//   }
+// }
 
 }

@@ -52,7 +52,7 @@ export class EditComponent extends BaseFormComponent implements OnInit {
     const url = this.baseUrl + "api/Alunos/" + this.id;
     this.http.get<Aluno>(url).subscribe(result =>{
       this.aluno = result;
-      this.title = "Editando dados de " + this.aluno.Nome;
+      this.title = "Editando dados de " + this.aluno.nome;
 
       //update the form with the student value
       this.form.patchValue(this.aluno);
@@ -71,11 +71,9 @@ export class EditComponent extends BaseFormComponent implements OnInit {
 
     const aluno = (this.id) ? this.aluno: <Aluno>{};
 
-    aluno.Nome = this.form.get("nome").value;
-    aluno.Periodo = this.form.get("periodo").value;
-    aluno.Av1 = this.form.get("av1").value;
-    aluno.Av2 = this.form.get("av2").value;
-    aluno.Bonus = this.form.get("bonus").value;
+    aluno.nome = this.form.get("nome").value;
+    aluno.periodo = this.form.get("periodo").value;
+    aluno.disciplinaId = this.form.get("disciplina").value;
 
     //Edit Mode
     if(this.id) {
@@ -84,7 +82,7 @@ export class EditComponent extends BaseFormComponent implements OnInit {
       this.http
         .put<Aluno>(url, aluno)
           .subscribe(result =>{
-            console.log("Aluno " + aluno.Nome + " has been updated.");
+            console.log("Aluno " + aluno.nome + " has been updated.");
 
             //go back to student view
             this.router.navigate(['./alunos']);

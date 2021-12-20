@@ -9,10 +9,22 @@
   title="Minha Imagem de perfil"
   />
   </figure>
-  <h2>Informações Acadêmicas</h2>
+  <h2 style="background: lightsalmon;
+  color: currentColor;
+  font-size: 1rem;
+  text-align: center;
+  margin: 5px;
+  padding: 2px;
+  border-radius: 5px;">Informações Acadêmicas</h2>
   <p style="text-align: center;">Aluno do {{this.periodo}} período. Realizando a disciplina de Teologia Bíblica do Antigo Testamento</p>
-  <h2>Disciplina Avaliada</h2>
-  <p style="text-align: center;">{{this.disciplina}}</p>
+  <h2 style="    background: lightsalmon;
+  color: currentColor;
+  font-size: 1rem;
+  text-align: center;
+  margin: 5px;
+  padding: 2px;
+  border-radius: 5px;">Disciplina Avaliada</h2>
+  <p style="text-align: center; color: tomato;">{{this.nomeDisciplina}}</p>
 
 </div>
 
@@ -27,37 +39,50 @@
 
       <aside class="info-box">
           <h2>Comentários</h2>
-          <p>
-              {{this.comentarios}}
+          <p style="color: black;">
+              teste
           </p>
       </aside>
       <aside>
-          <h2>Avaliações</h2>
-          <div class="grades" style="display: flex; justify-content: center;">
-          <p>
-              Nota da Av1 = {{this.av1}}
+          <h2 style="    background: lightsalmon;
+          color: currentColor;
+          font-size: 1rem;
+          text-align: center;
+          margin: 5px;
+          padding: 2px;
+          border-radius: 5px;">Avaliações</h2>
+          <div class="grades" style="display: flex; justify-content: space-evenly;">
+          <!-- <p style="color: black;">
+              Nota da Av1 =
           </p>
-          <p style="margin-right: 50px; margin-left: 50px;">
-              Nota da Av2 = {{this.av2}}
-          </p>
-          <p>
-              Bonus = {{this.bonus}}
-          </p>
+          <p style="margin-right: 50px; margin-left: 50px; color: black;">
+              Nota da Av2 =
+          </p> -->
+          <button class="btn btn">Nota da AV1 = {{this.av1}}</button>
+          <button class="btn btn">Nota da AV2 = {{this.av2}}</button>
+          <button class="btn btn">Nota da AV3 = {{this.av3}}</button>
+          <!-- <p style="color: black;">
+              Nota da AV3 =
+          </p> -->
         </div>
       </aside>
       <aside class="info-box">
           <h2>Média Final e Status</h2>
-        <div class="grades" style="display: flex; justify-content: center;">
-          <p style="margin-right: 50px;">
-            Nota Final =  {{this.notaFinal}}
-          </p>
-          <p>
-            Status = {{this.status}}
-          </p>
+        <div class="grades" style="display: flex; justify-content: space-evenly;">
+
+          <button class="btn btn-primary" (click)="notasAvailable()">Nota Final: </button>
+          <label for="notafinal" *ngIf="nota">Sua média final foi: {{this.notaFinal}}</label>
+          <button class="btn btn">Status: {{this.status}}</button>
         </div>
         </aside>
         <aside class="info-box">
-          <h2>Participação nos fóruns</h2>
+          <h2 style="background: lightsalmon;
+          color: currentColor;
+          font-size: 1rem;
+          text-align: center;
+          margin: 5px;
+          padding: 2px;
+          border-radius: 5px;">Participação nos fóruns</h2>
           <p>
             .....
           </p>

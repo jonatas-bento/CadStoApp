@@ -59,10 +59,13 @@ h2{
 /******** Left Side **********/
 /*****************************/
 .left-side {
-  background: #e1d8cf;
-  width: 30%;
-  max-width: 180px;
-  padding: 15px;
+  background: currentColor;
+    width: 30%;
+    max-width: 180px;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 12px;
+    margin-right: 5px;
 }
 .avatar {
   height: 130px;
@@ -77,6 +80,7 @@ h2{
   color: #e1d8cf;
   font-size: 1rem;
   padding: 6px;
+  border-radius: 5px;
 }
 .info-box p {
   font-size: 1rem;
@@ -89,13 +93,17 @@ h2{
   width: 100%;
 }
 .right-side header {
-  background: rgb(52,58,64);
-  color: #e1d8cf;
-  height: 150px;
-  margin-top: 1px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-image: linear-gradient(to right, lightsalmon, rgb(52,58,64)) ;
+    color: whitesmoke;
+    height: 101px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    width: 99%;
+    margin-left: 2px;
 }
 .right-side header * {
   text-align: center;
@@ -116,4 +124,5 @@ h2{
 
 p{
   font-family: 'Varela', sans-serif;
+  color: chocolate;
 }

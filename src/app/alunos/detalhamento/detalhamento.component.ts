@@ -1,3 +1,5 @@
+import { DisciplinasService } from './../../../services/disciplinas.service';
+import { Notas } from './../../interfaces/Notas';
 import { AlunosComponent } from './../alunos.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -5,6 +7,9 @@ import { Aluno } from '../aluno';
 import { AlunosService } from '../../../alunos.service';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NotasService } from '../../../services/notas.service';
+import { Disciplinas } from '../../interfaces/Disciplinas';
+
 
 @Component({
   selector: 'app-detalhamento',
@@ -17,18 +22,21 @@ export class DetalhamentoComponent implements OnInit {
   nome: string;
   periodo: string;
   nomeFoto: string;
-  comentarios: string;
-  notaFinal: number;
+  disciplina: Disciplinas;
+  nomeDisciplina: string;
+  nota: Notas;
   av1: number;
   av2: number;
-  bonus: number;
+  av3: number;
+  notaFinal: number;
   status: string;
-  resultado: number;
-  disciplina: string;
+  posArr: number;
 
 
   constructor(
     private alunosService: AlunosService,
+    private notasService: NotasService,
+    private disciplinasService: DisciplinasService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -40,35 +48,43 @@ export class DetalhamentoComponent implements OnInit {
 
   ngOnInit() {
 
-
-
-
       this.loadData();
-
+      this.disciplinasAvailable();
   }
 loadData(){
-// debugger;
   this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-    const url = this.baseUrl + 'api/Alunos/' + this.id;
-    this.http.get<Aluno>(url)
+    this.alunosService.getAlunosById(this.id)
     .subscribe(result =>{
       this.aluno = result;
-      this.nome = this.aluno.Nome;
-      this.periodo = this.aluno.Periodo;
-      this.nomeFoto = this.aluno.NomeFoto;
-      this.comentarios = this.aluno.Comentarios;
-      this.av1 = this.aluno.Av1;
-      this.av2 = this.aluno.Av2;
-      this.bonus = this.aluno.Bonus;
-      this.resultado = this.av1 + this.av2 + this.bonus;
-      this.notaFinal = (this.resultado>10) ? 10 : this.resultado;
-      this.status = (this.notaFinal>=6) ? 'Aprovado' : 'Reprovado';
-      this.disciplina = (this.periodo === "2º" || this.periodo === "1º")
-      ? this.disciplina = 'Teologia Bíblica do Antigo Testamento - Literatura Profética'
-      : this.disciplina = 'Didática Geral';
+      this.nome = this.aluno.nome;
+      this.periodo = this.aluno.periodo;
+      this.nomeFoto = this.aluno.nomeFoto;
     }, error => console.log(error));
-
-
 }
 
+notasAvailable(){
+  this.notasService.getAllNotas()
+  .subscribe((result) =>{
+    this.id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.posArr = this.id-1;
+    this.nota = result;
+    this.av1 = this.nota[this.posArr].aV1;
+    this.av2 = this.nota[this.posArr].aV2;
+    this.av3 = this.nota[this.posArr].aV3;
+    this.notaFinal = this.av1+this.av2+this.av3;
+    this.status = (this.notaFinal >= 6) ?
+          "Aprovado"  :
+          "Reprovado";
+    });
+  }
+
+  disciplinasAvailable(){
+    this.disciplinasService.getAllDisciplinas()
+    .subscribe((result) =>{
+      debugger;
+      this.disciplina = result;
+      //find the best way to capture the id number from de discipline
+      this.nomeDisciplina = this.disciplina[this.id].nome;
+    })
+  }
 }
