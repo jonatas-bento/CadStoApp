@@ -1,3 +1,4 @@
+import { LoginComponent } from '../api/base/user/login/login.component';
 
 import { ListadeAlunosComponent } from './alunos/detalhamento/ListadeAlunos/ListadeAlunos.component';
 import { OitavoPeriodoComponent } from './alunos/oitavoPeriodo/oitavoPeriodo.component';
@@ -16,6 +17,7 @@ import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'alunos', component: AlunosComponent, pathMatch: 'full'},
+  { path: 'entrar', component: LoginComponent, pathMatch: 'full'},
   { path: 'detalhamento/:id', component: DetalhamentoComponent, pathMatch: 'full'},
   { path: 'aluno/:id', component: EditComponent},
   { path: 'aluno', component: EditComponent},

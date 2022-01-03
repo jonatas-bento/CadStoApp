@@ -1,3 +1,4 @@
+import { UserService } from './../api/base/user/userService';
 import { SextoPeriodoComponent } from './alunos/sextoPeriodo/sextoPeriodo.component';
 import { SegundoPeriodoComponent } from './alunos/segundoPeriodo/segundoPeriodo.component';
 import { PrimeiroPeriodoComponent } from './alunos/primeiroPeriodo/primeiroPeriodo.component';
@@ -24,11 +25,11 @@ import { OitavoPeriodoComponent } from './alunos/oitavoPeriodo/oitavoPeriodo.com
 import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListadeAlunosComponent } from './alunos/detalhamento/ListadeAlunos/ListadeAlunos.component';
+import { LoginComponent } from '../api/base/user/login/login.component';
 
-import { ApiAuthorizationModule } from '../api-authorization/api-authorization.module';
-import { AuthorizeInterceptor } from '../api-authorization/authorize.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
+import { MenuUserComponent } from '../api/base/user/menu/menu.user.component';
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component
     PorBimestreComponent,
     DisciplinasComponent,
     FooterComponent,
-    ListadeAlunosComponent
+    ListadeAlunosComponent,
+    LoginComponent,
+    MenuUserComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -66,7 +69,8 @@ import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component
       provide: 'BASE_URL',
       useValue: environment.root
     },
-    AlunosService
+    AlunosService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
