@@ -30,6 +30,7 @@ import { LoginComponent } from '../api/base/user/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
 import { MenuUserComponent } from '../api/base/user/menu/menu.user.component';
+import { BoletimService } from '../services/boletim.service';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { MenuUserComponent } from '../api/base/user/menu/menu.user.component';
       useValue: environment.root
     },
     AlunosService,
-    UserService
+    UserService,
+    BoletimService
   ],
   bootstrap: [AppComponent]
 })
