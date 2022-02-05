@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  root: "http://localhost:5000/"
+  root: "http://localhost:5000/",
+  unauthorizedRedirectURL: "http://localhost:4200/entrar"
 };
 
 /*

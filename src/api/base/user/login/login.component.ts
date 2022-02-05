@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../userService';
 import { User } from '../user';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    debugger;
+    this.spinner.show();
     if (this.userForm.valid && this.userForm.dirty) {
 
       let _user = Object.assign({}, this.user, this.userForm.value);
@@ -35,6 +39,7 @@ export class LoginComponent implements OnInit {
           fail => {this.onError(fail)}
         );
     }
+    this.spinner.hide();
   }
 
   onSaveComplete(response: any) {

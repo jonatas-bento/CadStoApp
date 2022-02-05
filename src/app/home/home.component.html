@@ -5,7 +5,7 @@
       padding: 3px; position: relative; left: 17px; top: 60px;">
         <h1>Relatório de Rendimento dos Alunos</h1>
         <p>
-          Esse conteúdo tem objetivo de verificar o andamento dos meus alunos.
+          Esse conteúdo tem objetivo de verificar o andamento dos alunos do Seminário Teológico do Oeste.
         </p>
       </div>
       <div class="col-sm-7">
@@ -15,11 +15,9 @@
           </div>
           <div class="col-4 mt-5 col-sm-5 align-items-center" style="display: flex; flex-direction: column;
                 padding: 3px; position: relative; left: 113px;">
-              <img class="avatar" src="http://localhost:5000/img/eu.png" alt="Imagem Professor">
-              <h2>Jonatas Bento</h2>
-              <p>Professor das disciplinas de Teologia Bíblica do Antigo Testamento,
-                Didática e Exegese (AT/NT)
-              </p>
+              <img class="avatar" src="http://localhost:5000/img/{{this.nomeFoto}}" *ngIf="_user">
+              <h2>{{this.nomeUsuario}}</h2>
+              <p>{{this.atribuicoes}}</p>
           </div>
         </div>
       </div>

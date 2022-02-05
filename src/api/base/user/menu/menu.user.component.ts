@@ -14,7 +14,7 @@ export class MenuUserComponent {
   userLogado(): boolean {
     var user = this.userService.obterUsuario();
     if (user) {
-      this.saudacao = "Olá " + user.email;
+      this.saudacao = "Olá " + user.nome;
       return true;
     }
 

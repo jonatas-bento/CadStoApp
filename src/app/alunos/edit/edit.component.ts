@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -34,23 +34,21 @@ export class EditComponent extends BaseFormComponent implements OnInit {
     this.form = new FormGroup({
       nome: new FormControl('', Validators.required),
       periodo: new FormControl('', Validators.required),
-      av1: new FormControl('', Validators.required),
-      av2: new FormControl('', Validators.required),
-      bonus: new FormControl('', Validators.required)
+      nomeFoto: new FormControl('', Validators.required)
     });
 
     this.loadData();
   }
 
   loadData(){
+    debugger;
     //retrieve ID from 'id' parameter
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
       if(this.id){
     //Edit Mode
 
     //fetch the student from the server
-    const url = this.baseUrl + "api/Alunos/" + this.id;
-    this.http.get<Aluno>(url).subscribe(result =>{
+    this.alunosService.getAlunosById(this.id).subscribe(result =>{
       this.aluno = result;
       this.title = "Editando dados de " + this.aluno.nome;
 
@@ -73,31 +71,29 @@ export class EditComponent extends BaseFormComponent implements OnInit {
 
     aluno.nome = this.form.get("nome").value;
     aluno.periodo = this.form.get("periodo").value;
-    aluno.disciplinaId = this.form.get("disciplina").value;
+    aluno.nomeFoto = this.form.get("nomeFoto").value;
 
     //Edit Mode
     if(this.id) {
 
       const url = this.baseUrl + "api/Alunos/" + this.id;
-      this.http
-        .put<Aluno>(url, aluno)
+      this.alunosService.editAluno(aluno, this.id)
           .subscribe(result =>{
-            console.log("Aluno " + aluno.nome + " has been updated.");
+            console.log("Aluno " + result.nome + " has been updated.");
 
             //go back to student view
-            this.router.navigate(['./alunos']);
+            this.router.navigate(['./listaAlunos']);
           }, error => console.log(error));
       }
       else {
 
       //Add new Mode
-      const url = this.baseUrl + "api/Alunos/";
-      this.http
-        .post<Aluno>(url, aluno)
+      debugger;
+      this.alunosService.addAluno(aluno)
           .subscribe(result =>{
             console.log("Aluno " + result.id + " has been created.");
 
-            this.router.navigate(['./alunos']);
+            this.router.navigate(['./listaAlunos']);
           }, error => console.log(error));
       }
     }

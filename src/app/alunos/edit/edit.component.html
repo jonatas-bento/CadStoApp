@@ -38,21 +38,37 @@
       </div>
 
       <div class="form-group">
+        <label for="nomeFoto">Nome da foto: </label>
+        <br />
+        <input type="text" id="nomeFoto"
+              formControlName="nomeFoto" required
+              placeholder="primeironome.png"
+              class="form-control" />
+      </div>
+
+      <div *ngIf="form.get('nomeFoto').invalid && (form.get('nomeFoto').dirty || form.get('nomeFoto').touched)"
+      class="invalid-feedback">
+        <div *ngIf="form.get('nomeFoto').erros?.required">
+          Nome da foto é obrigatório.
+        </div>
+      </div>
+
+      <!-- <div class="form-group">
         <label for="av1">Primeira Avaliação (Av1): </label>
         <br />
         <input type="text" id="av1"
               formControlName="av1" required
               placeholder="Av1..."
               class="form-control" />
-      </div>
+      </div> -->
 
-      <div *ngIf="form.get('av1').invalid && (form.get('av1').dirty || form.get('av1').touched)"
+      <!-- <div *ngIf="form.get('av1').invalid && (form.get('av1').dirty || form.get('av1').touched)"
       class="invalid-feedback">
         <div *ngIf="form.get('av1').erros?.required">
           Avaliações são obrigatórias.
         </div>
-      </div>
-
+      </div> -->
+<!--
       <div class="form-group">
         <label for="av2">Segunda Avaliação (Av2): </label>
         <br />
@@ -60,15 +76,15 @@
               formControlName="av2" required
               placeholder="Av2..."
               class="form-control" />
-      </div>
-
+      </div> -->
+<!--
       <div *ngIf="form.get('av2').invalid && (form.get('av2').dirty || form.get('av2').touched)"
       class="invalid-feedback">
         <div *ngIf="form.get('av2').erros?.required">
           Avaliações são obrigatórias.
         </div>
-      </div>
-
+      </div> -->
+<!--
       <div class="form-group">
         <label for="bonus">Bônus: </label>
         <br />
@@ -76,17 +92,17 @@
               formControlName="bonus"
               placeholder="Caso possua bonus..."
               class="form-control" />
-      </div>
+      </div> -->
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="disciplina">Disciplina ID: </label>
         <br />
         <input type="text" id="disciplina"
               formControlName="disciplina"
-              placeholder="Nome da disciplina"
+              placeholder="Numero da Disciplina - Consulte tabela caso não saiba"
               class="form-control" />
-      </div>
-
+      </div> -->
+<!--
       <div class="form-group">
         <label for="Bimestre">Bimestre: </label>
         <br />
@@ -111,7 +127,7 @@
         <div *ngIf="form.get('bonus').erros?.required">
           Avaliações são obrigatórias.
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group commands">
         <button *ngIf="id" type="submit"
@@ -130,7 +146,7 @@
         </button>
 
         <button type="button"
-          [routerLink]="['/alunos']"
+          [routerLink]="['/listaAlunos']"
           class="btn">
           Cancelar
         </button>

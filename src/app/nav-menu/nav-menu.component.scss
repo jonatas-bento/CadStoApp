@@ -1,11 +1,55 @@
-.logo{
-  width: 100px;
-  height: 40px;
-  margin-left: 10px;
-  color: blue;
+.headerFirst{
+  width: 100%;
+  height: 136px;
+  background-color: rgba(21, 21, 49, 1);
+  padding: 20px;
+
+  ul{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 30px;
+  margin-left: 30px;
+  padding: 20px;
+  }
+
+  ul>li:first-child{
+    margin-left: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+
+
+  ul > li > a{
+    color: aliceblue;
+    font-family: 'Sorts Mill Goudy', serif;
+  }
+
+  .dropdown-item{
+    font-size: 0.8rem;
+    color: aliceblue;
+  }
+
+  .dropdown-item:hover{
+    background-color:darkblue;
+  }
+
+  .headerName{
+    margin-top: 16px;
+    text-align: center;
+    color: aliceblue;
+    font-family: 'Sorts Mill Goudy', serif;
+    font-size: 2rem;
+  }
 }
 
+.logo{
+  width: 150px;
+  height: 65px;
+  margin-left: 10px;
+  margin-right: 80px;
+  cursor: pointer;
 
-
-
-
+}

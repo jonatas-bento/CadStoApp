@@ -23,13 +23,8 @@
       <li class="nav-item active pl-3 pr-3">
         <a class="nav-link" style="font-family: 'Varela Round', sans-serif;" [routerLink]="['/disciplinas']">Disciplinas</a>
       </li>
-      <!-- <li class="nav-item pl-3 pr-3" [routerLinkActive]="['link-active']">
-        <a class="nav-link" style="font-family: 'Varela Round', sans-serif;">Alunos</a>
-      </li> -->
       <li ngbDropdown class="nav-item dropdown pl-3 pr-3">
         <a ngbDropdownToggle class="nav-link dropdown-toggle"
-        style="font-family: 'Varela Round', sans-serif;"
-
            id="navbarDropdown"
            role="button"
            data-toggle="dropdown"
@@ -37,15 +32,76 @@
            aria-expanded="false">
           Boletim
         </a>
-        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown" style="text-align: center;">
-          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/primeiroPeriodo']">1º Periodo</a>
-          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/segundoPeriodo']">2º Período</a>
-          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/sextoPeriodo']">6º Período</a>
-          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/oitavoPeriodo']">8º Período</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown"
+        style="text-align: center;
+        background-color: rgba(33, 93, 149, 0.48);
+        margin-left: 10px;">
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/primeiroPeriodo']">Primeiro Periodo</a>
+          <div class="dropdown-divider"></div>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/segundoPeriodo']">Segundo Período</a>
+          <div class="dropdown-divider"></div>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/sextoPeriodo']">Sexto Período</a>
+          <div class="dropdown-divider"></div>
+          <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/oitavoPeriodo']">Oitavo Período</a>
           <div class="dropdown-divider"></div>
           <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/porBimestre']">Por Bimestre</a>
         </div>
       </li>
-    </ul>
+</ul>
   </div>
 </nav>
+
+<!-- <header class="headerFirst">-->
+<!--
+  <ul class="navbar-nav ml-auto pr-5">
+    <li>
+      <a (click)="open(mymodal)">Login</a>
+    </li>
+    <li style="position: absolute; left: 120px;"><a [routerLink]="['/listaAlunos']">Alunos</a></li>
+    <li style="width: 100px; position: absolute; right: 320px;"><app-menu-user></app-menu-user></li>
+    <li ngbDropdown class="nav-item dropdown pl-3 pr-3">
+      <a ngbDropdownToggle class="nav-link dropdown-toggle"
+         id="navbarDropdown"
+         role="button"
+         data-toggle="dropdown"
+         aria-haspopup="true"
+         aria-expanded="false">
+        Boletim
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown"
+      style="text-align: center;
+      background-color: rgba(33, 93, 149, 0.48);
+      margin-left: 10px;">
+        <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/primeiroPeriodo']">Primeiro Periodo</a>
+        <div class="dropdown-divider"></div>
+        <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/segundoPeriodo']">Segundo Período</a>
+        <div class="dropdown-divider"></div>
+        <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/sextoPeriodo']">Sexto Período</a>
+        <div class="dropdown-divider"></div>
+        <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/oitavoPeriodo']">Oitavo Período</a>
+        <div class="dropdown-divider"></div>
+        <a ngbDropdwonItem class="dropdown-item" [routerLink]="['/porBimestre']">Por Bimestre</a>
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="headerName">CadSto</h2> -->
+
+<!-- </header> -->
+
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Entre com seu usuário</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-login></app-login>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div> -->
+</ng-template>
+

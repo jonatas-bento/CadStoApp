@@ -1,3 +1,4 @@
+import { TokenInterceptorService } from './../services/httpInterceptor.service';
 import { UserService } from './../api/base/user/userService';
 import { SextoPeriodoComponent } from './alunos/sextoPeriodo/sextoPeriodo.component';
 import { SegundoPeriodoComponent } from './alunos/segundoPeriodo/segundoPeriodo.component';
@@ -31,6 +32,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
 import { MenuUserComponent } from '../api/base/user/menu/menu.user.component';
 import { BoletimService } from '../services/boletim.service';
+
 
 
 @NgModule({
@@ -69,6 +71,11 @@ import { BoletimService } from '../services/boletim.service';
     {
       provide: 'BASE_URL',
       useValue: environment.root
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
     },
     AlunosService,
     UserService,

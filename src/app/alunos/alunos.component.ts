@@ -41,7 +41,7 @@ export class AlunosComponent implements OnInit {
 loadData(){
 this.spinner.show();
 this.alunosService.getAlunos()
-.subscribe(result =>
+.subscribe((result: any) =>
   this.alunos = result)
 , (error: any) => console.log(error);
 this.spinner.hide();

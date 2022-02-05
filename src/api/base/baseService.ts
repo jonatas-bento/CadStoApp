@@ -37,8 +37,11 @@ export abstract class BaseService {
     }
 
     public obterUsuario() {
-
       return JSON.parse(localStorage.getItem('app.user') || null);
+    }
+
+    protected obtemImagemAssociadaAoUsuario(){
+      return JSON.parse(localStorage.getItem('imagemUsuario') || null);
     }
 
     protected obterTokenUsuario(): string {
