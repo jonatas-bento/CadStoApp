@@ -2,6 +2,17 @@
 <br>
 <h3 style="padding-top: 50px">Login </h3>
 
+<ngx-spinner *ngIf="!this.user"
+bdColor = "rgba(0, 0, 0, 0.8)"
+size = "medium"
+color = "#fff"
+type = "ball-scale-multiple"
+[fullScreen] = "true">
+  <p style="color: white" >
+   Carregando...
+  </p>
+</ngx-spinner>
+
 <hr>
 <div class="row">
   <div class="col-md-10">
