@@ -1,7 +1,7 @@
 export interface Disciplinas {
   id: number;
   nome: string;
-  professor: string;
+  professorId: number;
   bimestre: number;
   ativo: number;
 }

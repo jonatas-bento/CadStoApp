@@ -24,7 +24,7 @@ public editAluno(aluno: any, id: number): Observable<Aluno>{
 }
 
 public getAlunos(): Observable<any>{
-  return this.http.get<Aluno[]>(this.baseUrl + 'api/Alunos', super.ObterAuthHeaderJson())
+  return this.http.get<Aluno[]>(this.baseUrl + 'api/Alunos', super.ObterAuthHeaderJson());
 }
 
 public getAlunosById(id: number): Observable<Aluno>{

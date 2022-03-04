@@ -1,3 +1,7 @@
+import { DetalhamentoProfessorComponent } from './professores/detalhamentoProfessor/detalhamentoProfessor.component';
+import { EditProfessoresComponent } from './professores/editProfessores/editProfessores.component';
+import { ProfessoresService } from './../services/professores.service';
+import { TerceiroPeriodoComponent } from './alunos/terceiroPeriodo/terceiroPeriodo.component';
 import { TokenInterceptorService } from './../services/httpInterceptor.service';
 import { UserService } from './../api/base/user/userService';
 import { SextoPeriodoComponent } from './alunos/sextoPeriodo/sextoPeriodo.component';
@@ -32,27 +36,36 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
 import { MenuUserComponent } from '../api/base/user/menu/menu.user.component';
 import { BoletimService } from '../services/boletim.service';
+import { ProfessoresComponent } from './professores/professores.component';
+import { DatePipe } from '@angular/common';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { LancamentoNotasComponent } from './lancamentoNotas/lancamentoNotas.component';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     NavMenuComponent,
     AlunosComponent,
     DetalhamentoComponent,
+    DetalhamentoProfessorComponent,
     EditComponent,
+    EditProfessoresComponent,
     PrimeiroPeriodoComponent,
     SegundoPeriodoComponent,
     SextoPeriodoComponent,
     OitavoPeriodoComponent,
+    TerceiroPeriodoComponent,
     PorBimestreComponent,
     DisciplinasComponent,
     FooterComponent,
     ListadeAlunosComponent,
     LoginComponent,
-    MenuUserComponent
+    MenuUserComponent,
+    ProfessoresComponent,
+      LancamentoNotasComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -64,7 +77,13 @@ import { BoletimService } from '../services/boletim.service';
     BrowserAnimationsModule,
     NgbModule,
     NgxSpinnerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true
+    })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
@@ -79,7 +98,10 @@ import { BoletimService } from '../services/boletim.service';
     },
     AlunosService,
     UserService,
-    BoletimService
+    BoletimService,
+    ProfessoresService,
+    DatePipe,
+    ToastrService
   ],
   bootstrap: [AppComponent]
 })

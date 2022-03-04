@@ -1,0 +1,157 @@
+<div class="professor-edit">
+  <h1 style="font-weight: 800; margin-top: 50px;">{{title}}</h1>
+
+  <p *ngIf="this.id && !professor"><em>Carregando...</em></p>
+
+  <div class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="nomeCompleto">Nome do Professor: </label>
+      <br />
+      <input type="text" id="nomeCompleto"
+            formControlName="nomeCompleto" required
+            placeholder="Nome Completo do Professor..."
+            class="form-control" />
+    </div>
+
+    <div *ngIf="form.get('nomeCompleto').invalid && (form.get('nomeCompleto').dirty || form.get('nomeCompleto').touched)"
+    class="invalid-feedback">
+      <div *ngIf="form.get('nomeCompleto').erros?.required">
+        Nome é obrigatório.
+      </div>
+    </div>
+<!--
+    <div class="form-group">
+      <label for="matricula">Matricula: </label>
+      <br />
+      <input type="text" id="matricula"
+            formControlName="matricula" required
+            placeholder="Matricula..."
+            class="form-control" />
+    </div>
+
+    <div *ngIf="form.get('matricula').invalid && (form.get('matricula').dirty || form.get('matricula').touched)"
+    class="invalid-feedback">
+      <div *ngIf="form.get('matricula').erros?.required">
+        A matrícula é um campo obrigatório.
+      </div>
+    </div> -->
+
+    <div class="form-group">
+      <label for="descricaoProfessor">Descrição: </label>
+      <br />
+      <input type="text" id="descricaoProfessor"
+            formControlName="descricaoProfessor" required
+            placeholder="Descrição do professor..."
+            class="form-control" />
+    </div>
+
+    <div *ngIf="form.get('descricaoProfessor').invalid && (form.get('descricaoProfessor').dirty || form.get('descricaoProfessor').touched)"
+    class="invalid-feedback">
+      <div *ngIf="form.get('descricaoProfessor').erros?.required">
+        Descrição é obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nomeFoto">Nome da foto: </label>
+      <br />
+      <input type="text" id="nomeFoto"
+            formControlName="nomeFoto" required
+            placeholder="primeironome.png"
+            class="form-control" />
+    </div>
+
+    <div *ngIf="form.get('nomeFoto').invalid && (form.get('nomeFoto').dirty || form.get('nomeFoto').touched)"
+    class="invalid-feedback">
+      <div *ngIf="form.get('nomeFoto').erros?.required">
+        Nome da foto é obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email: </label>
+      <br />
+      <input type="text" id="email"
+            formControlName="email" required
+            placeholder="email"
+            class="form-control" />
+    </div>
+
+    <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)"
+    class="invalid-feedback">
+      <div *ngIf="form.get('email').erros?.required">
+        Email é obrigatório.
+      </div>
+    </div>
+
+
+<!--
+    <div class="form-group">
+      <label for="bonus">Bônus: </label>
+      <br />
+      <input type="text" id="bonus"
+            formControlName="bonus"
+            placeholder="Caso possua bonus..."
+            class="form-control" />
+    </div> -->
+
+    <!-- <div class="form-group">
+      <label for="disciplina">Disciplina ID: </label>
+      <br />
+      <input type="text" id="disciplina"
+            formControlName="disciplina"
+            placeholder="Numero da Disciplina - Consulte tabela caso não saiba"
+            class="form-control" />
+    </div> -->
+<!--
+    <div class="form-group">
+      <label for="Bimestre">Bimestre: </label>
+      <br />
+      <input type="radio" id="primeiroBimestre"
+            formControlName="bimestre"
+            value=1
+            name="bimestre"
+            />
+      <label for="primeiroBimestre">Primeiro Bimestre</label>
+      <input type="radio" id="segundoBimestre"
+            formControlName="bimestre"
+            value=2
+            name="bimestre"
+            />
+      <label for="segundoBimestre">Segundo Bimestre</label>
+
+      <label for=""></label>
+    </div>
+
+    <div *ngIf="form.get('bonus').invalid && (form.get('bonus').dirty || form.get('bonus').touched)"
+    class="invalid-feedback">
+      <div *ngIf="form.get('bonus').erros?.required">
+        Avaliações são obrigatórias.
+      </div>
+    </div> -->
+
+    <div class="form-group commands">
+      <button *ngIf="id" type="submit"
+        (click)="onSubmit()"
+        [disabled]="form.invalid"
+        class="btn btn-success">
+        Salvar
+      </button>
+
+      <button *ngIf="!id" type="submit"
+        (click)="onSubmit()"
+        [disabled]="form.invalid"
+        class="btn btn-success"
+        style="margin-left: 3px;">
+        Adicionar
+      </button>
+
+      <button type="button"
+        [routerLink]="['/professores']"
+        class="btn">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { DetalhamentoProfessorComponent } from './professores/detalhamentoProfessor/detalhamentoProfessor.component';
+import { EditProfessoresComponent } from './professores/editProfessores/editProfessores.component';
 import { LoginComponent } from '../api/base/user/login/login.component';
 
 import { ListadeAlunosComponent } from './alunos/detalhamento/ListadeAlunos/ListadeAlunos.component';
@@ -13,16 +15,23 @@ import { EditComponent } from './alunos/edit/edit.component';
 import { PrimeiroPeriodoComponent } from './alunos/primeiroPeriodo/primeiroPeriodo.component';
 import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
+import { TerceiroPeriodoComponent } from './alunos/terceiroPeriodo/terceiroPeriodo.component';
+import { ProfessoresComponent } from './professores/professores.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'alunos', component: AlunosComponent, pathMatch: 'full'},
+  { path: 'professores', component: ProfessoresComponent, pathMatch: 'full'},
   { path: 'entrar', component: LoginComponent, pathMatch: 'full'},
   { path: 'detalhamento/:id', component: DetalhamentoComponent, pathMatch: 'full'},
+  { path: 'detalheProfessor/:id', component: DetalhamentoProfessorComponent, pathMatch: 'full'},
   { path: 'aluno/:id', component: EditComponent},
   { path: 'aluno', component: EditComponent},
+  { path: 'professor/:id', component: EditProfessoresComponent},
+  { path: 'professor', component: EditProfessoresComponent},
   { path: 'primeiroPeriodo', component: PrimeiroPeriodoComponent, pathMatch: 'full'},
   { path: 'segundoPeriodo', component: SegundoPeriodoComponent, pathMatch: 'full'},
+  { path: 'terceiroPeriodo', component: TerceiroPeriodoComponent, pathMatch: 'full'},
   { path: 'sextoPeriodo', component: SextoPeriodoComponent, pathMatch: 'full'},
   { path: 'oitavoPeriodo', component: OitavoPeriodoComponent, pathMatch: 'full'},
   { path: 'disciplinas', component: DisciplinasComponent, pathMatch: 'full'},
