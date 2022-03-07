@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AngularMaterialModule} from './angular.material.module';
+import {MatInputModule} from '@angular/material/input';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -40,17 +41,23 @@ import { ProfessoresComponent } from './professores/professores.component';
 import { DatePipe } from '@angular/common';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { LancamentoNotasComponent } from './lancamentoNotas/lancamentoNotas.component';
+import { DialogBoxComponent } from './lancamentoNotas/dialog-box/dialog-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HomeComponent,
     NavMenuComponent,
     AlunosComponent,
     DetalhamentoComponent,
     DetalhamentoProfessorComponent,
+    DialogBoxComponent,
     EditComponent,
     EditProfessoresComponent,
     PrimeiroPeriodoComponent,
@@ -75,6 +82,11 @@ import { LancamentoNotasComponent } from './lancamentoNotas/lancamentoNotas.comp
     AppRoutingModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
     NgbModule,
     NgxSpinnerModule,
     FontAwesomeModule,

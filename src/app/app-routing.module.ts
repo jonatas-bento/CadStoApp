@@ -1,3 +1,4 @@
+import { LancamentoNotasComponent } from './lancamentoNotas/lancamentoNotas.component';
 import { DetalhamentoProfessorComponent } from './professores/detalhamentoProfessor/detalhamentoProfessor.component';
 import { EditProfessoresComponent } from './professores/editProfessores/editProfessores.component';
 import { LoginComponent } from '../api/base/user/login/login.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'oitavoPeriodo', component: OitavoPeriodoComponent, pathMatch: 'full'},
   { path: 'disciplinas', component: DisciplinasComponent, pathMatch: 'full'},
   { path: 'listaAlunos', component: ListadeAlunosComponent, pathMatch: 'full'},
+  { path: 'lancamentoNotas', component: LancamentoNotasComponent, pathMatch: 'full'},
   { path: 'porBimestre', component: PorBimestreComponent, pathMatch: 'full'}
 
 ];

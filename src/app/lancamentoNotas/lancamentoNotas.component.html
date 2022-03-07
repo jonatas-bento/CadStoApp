@@ -1,0 +1,67 @@
+<table mat-table #table [dataSource]="myDataArray" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="alunoId">
+  <mat-header-cell *matHeaderCellDef>Aluno Id</mat-header-cell>
+  <mat-cell *matCellDef="let aluno"><div> {{aluno.alunoId}} </div></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="disciplinaId">
+    <mat-header-cell *matHeaderCellDef>Disciplina Id</mat-header-cell>
+    <mat-cell *matCellDef="let aluno"><div> {{aluno.disciplinaId}} </div></mat-cell>
+    </ng-container>
+
+  <ng-container matColumnDef="av1">
+  <mat-header-cell *matHeaderCellDef>Av1</mat-header-cell>
+  <mat-cell *matCellDef="let aluno"><div> {{aluno.av1}} </div></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="av2">
+    <mat-header-cell *matHeaderCellDef>Av2</mat-header-cell>
+    <mat-cell *matCellDef="let aluno"><div> {{aluno.av2}} </div></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="av3">
+      <mat-header-cell *matHeaderCellDef>Av3</mat-header-cell>
+      <mat-cell *matCellDef="let aluno"><div> {{aluno.av3}} </div></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef>Ações </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+        <button mat-button color="primary" (click)="openDialog(this.user)">Edit</button> |
+        <button mat-button color="warn" (click)="delete(this.user)">Delete</button>
+        </mat-cell>
+        </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let dataSource; columns: displayedColumns;"></mat-row>
+
+  </table>
+
+
+  <mat-form-field apparence="legacy">
+    <mat-label>Id do Aluno</mat-label>
+    <input matInput [(ngModel)]="newNotaAluno.alunoId" type="number" name="alunoId" id="alunoId" class="form-control" required>
+    </mat-form-field><br>
+
+    <mat-form-field apparence="legacy">
+    <mat-label>Id da Disciplina</mat-label>
+    <input matInput [(ngModel)]="newNotaAluno.disciplinaId" type="number" name="disciplinaId" id="disciplinaId" class="form-control" required>
+    </mat-form-field><br>
+
+    <mat-form-field apparence="legacy">
+    <mat-label>Av1</mat-label>
+    <input matInput [(ngModel)]="newNotaAluno.av1" type="number" name="av1" id="av1" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+    </mat-form-field><br>
+
+    <mat-form-field apparence="legacy">
+      <mat-label>Av2</mat-label>
+      <input matInput [(ngModel)]="newNotaAluno.av2" type="number" name="av2" id="av2" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+      </mat-form-field><br>
+
+      <mat-form-field apparence="legacy">
+        <mat-label>Av3</mat-label>
+        <input matInput [(ngModel)]="newNotaAluno.av3" type="number" name="av3" id="av3" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+        </mat-form-field><br>
+
+    <button mat-raised-button color="primary" (click)="addNota()">submit</button>
