@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Row Action :: Update</h1>
+<!-- <h1 mat-dialog-title>Row Action :: Update</h1>
 
 <div mat-dialog-content>
 <p>Atualizar nota do Aluno</p>
@@ -11,4 +11,66 @@
 <button mat-button (click)="onNoClick()">Cancel</button>
 <button mat-button [mat-dialog-close]="data.alunoId"
 cdkFocusInitial>Atualizar</button>
-</div>
+</div> -->
+
+
+<div class="form" [formGroup]="form" >
+  <div style="display: flex;
+  align-items: center;
+  justify-content: center;">
+  <select (change)="changeStudent($event)" style="margin-left: 50px;
+    width: 200px;">
+      <option *ngFor="let student of students" value="{{student.id}}" required>
+        {{student.nome}}
+      </option>
+      </select>
+
+      <select (change)="changeDiscipline($event)" style="margin: 50px;
+    width: 200px;">
+      <option *ngFor="let discipline of disciplinas" value="{{discipline.id}}" required>
+        {{discipline.nome}}
+      </option>
+      </select>
+    </div>
+  <mat-form-field apparence="legacy">
+    <mat-label>Id do Aluno</mat-label>
+
+      <input matInput [(ngModel)]="newNotaAluno.alunoId" type="number" name="alunoId" id="alunoId" class="form-control"
+      formControlName="alunoId" required>
+
+    </mat-form-field><br>
+
+    <mat-form-field apparence="legacy">
+    <mat-label>Id da Disciplina</mat-label>
+    <input matInput [(ngModel)]="newNotaAluno.disciplinaId" type="number" name="disciplinaId" id="disciplinaId"
+    class="form-control" formControlName="disciplinaId" required>
+    </mat-form-field><br>
+
+    <mat-form-field apparence="legacy">
+    <mat-label>Av1</mat-label>
+    <input matInput [(ngModel)]="newNotaAluno.av1" type="number" name="av1" id="av1" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+    formControlName="av1" required>
+    </mat-form-field><br>
+
+    <mat-form-field apparence="legacy">
+      <mat-label>Av2</mat-label>
+      <input matInput [(ngModel)]="newNotaAluno.av2" type="number" name="av2" id="av2" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+      formControlName="av2" required>
+      </mat-form-field><br>
+
+      <mat-form-field apparence="legacy">
+        <mat-label>Av3</mat-label>
+        <input matInput [(ngModel)]="newNotaAluno.av3" type="number" name="av3" id="av3" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+        formControlName="av3" required>
+        </mat-form-field><br>
+
+      <mat-form-field apparence="legacy">
+          <mat-label>Bimestre</mat-label>
+          <input matInput [(ngModel)]="newNotaAluno.bimestre" type="number" name="bimestre" id="bimestre" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          formControlName="bimestre" required>
+        </mat-form-field><br>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()">submit</button>
+
+
+  </div>
