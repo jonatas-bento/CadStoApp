@@ -11,9 +11,9 @@ import { Aluno } from '../aluno';
   styleUrls: ['./sextoPeriodo.component.scss']
 })
 export class SextoPeriodoComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'nome', 'periodo', 'av1', 'av2', 'bonus',
-  'notaFinal', 'status'];
+  public displayedColumns: string[] = ['nome', 'periodo', 'acoes'];
   alunos: Aluno[];
+  naoContemAlunos = false;
 
   constructor(
     private http: HttpClient,
@@ -25,28 +25,19 @@ export class SextoPeriodoComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.spinner.show();
+    this.loadData();
+  }
+
+loadData(){
+  this.spinner.show();
     this.alunosService.getAlunos()
     .pipe(map(alunos => alunos.filter(aluno => aluno.Periodo == "6º")))
-    .subscribe(result =>
-        this.alunos = result),
-        (error: any) => console.error(error);
-        () => this.spinner.hide();
-
-  }
-
-  media(a: number, b: number, c?: number) {
-    let resultado = a+b+c;
-    return resultado > 10 ? resultado = 10 : resultado;
-  }
-
-  status(media){
-    if(!media)
-    return '-';
-    if(media >= 6){
-      return 'APROVADO';
-    } else {
-      return 'REPROVADO';
-    }
-  }
+    .subscribe(result =>{
+      if (result.length == 0){
+        this.naoContemAlunos = true;
+      } else{
+        this.alunos = result;
+      }
+    });
+}
 }

@@ -1,8 +1,15 @@
-<h1>Alunos do 2º Período</h1>
+<div *ngIf="!naoContemAlunos">
+  <h1>Alunos do {{this.periodo}} Período</h1>
 
-<p>Disciplina: TBAT - Proféticos</p>
+  <p>Informações Gerais</p>
+</div>
 
-<ngx-spinner *ngIf="!alunos"
+<div *ngIf="naoContemAlunos">
+  <h1>Ainda não existem alunos matriculados nesse período</h1>
+
+  <p>Informações Gerais</p>
+</div>
+<!-- <ngx-spinner *ngIf="!alunosPrimeiroPeriodo"
 bdColor = "rgba(0, 0, 0, 0.8)"
 size = "medium"
 color = "#fff"
@@ -11,67 +18,66 @@ type = "ball-scale-multiple"
   <p style="color: white" >
    Carregando...
   </p>
-</ngx-spinner>
+</ngx-spinner> -->
 
 
-<table mat-table [dataSource]="alunos" class="table-striped mat-elevation-z8"
-       [hidden]="!alunos">
-       <!-- matSort (matSortChange)="loadData()"
-       matSortActive="{{defaultSortColumn}}"
-       matSortDirection="asc" -->
+<div class="commands text-right" *ngIf="alunosSegundoPeriodo">
+  <button type="submit"
+    [routerLink]="['/aluno']"
+    class="btn btn-primary"
+    style="margin-bottom: 30px;">
+    Adicionar novo Aluno
+  </button>
+</div>
 
-  <!-- Id Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-    <td mat-cell *matCellDef="let aluno"> {{aluno.Id}} </td>
-  </ng-container>
+<table mat-table [dataSource]="alunosSegundoPeriodo" class="table-striped mat-elevation-z8"
+ [hidden]="!alunosSegundoPeriodo">
+ <!-- matSort (matSortChange)="loadData()"
+ matSortActive="{{defaultSortColumn}}"
+ matSortDirection="asc" -->
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
-    <td mat-cell *matCellDef="let aluno">
-      <a [routerLink]="['/aluno', aluno.Id]" routerLinkActive="router-link-active" > {{aluno.Nome}} </a>
-    </td>
-  </ng-container>
+<!-- Id Column -->
+<!-- <ng-container matColumnDef="id">
+<th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+<td mat-cell *matCellDef="let aluno"> {{aluno.Id}} </td>
+</ng-container> -->
 
-  <!-- Period Column -->
-  <ng-container matColumnDef="periodo">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Período</th>
-    <td mat-cell *matCellDef="let aluno"> {{aluno.Periodo}} </td>
-  </ng-container>
+<!-- Name Column -->
+<ng-container matColumnDef="nome">
+<th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+<td mat-cell *matCellDef="let aluno">
+ {{aluno.nome}}
+</td>
+</ng-container>
 
-  <!-- Av1 Column -->
-  <ng-container matColumnDef="av1">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Av1</th>
-    <td mat-cell *matCellDef="let aluno"> {{aluno.Av1}} </td>
-  </ng-container>
-
-  <!-- Av2 Column -->
-  <ng-container matColumnDef="av2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Av2</th>
-    <td mat-cell *matCellDef="let aluno"> {{aluno.Av2}} </td>
-  </ng-container>
-
-  <!-- Bonus Column -->
-  <ng-container matColumnDef="bonus">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Bonus</th>
-    <td mat-cell *matCellDef="let aluno"> {{aluno.Bonus}} </td>
-  </ng-container>
-
-  <!-- Final Grade Column -->
-  <ng-container matColumnDef="notaFinal">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nota Final</th>
-    <td mat-cell *matCellDef="let aluno"> {{media(aluno.Av1, aluno.Av2, aluno.Bonus)}} </td>
-  </ng-container>
-
-   <!-- Status Column -->
-   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-    <td mat-cell *matCellDef="let aluno"> {{status(media(aluno.Av1, aluno.Av2, aluno.Bonus))}} </td>
-  </ng-container>
+<!-- Period Column -->
+<ng-container matColumnDef="periodo">
+<th mat-header-cell *matHeaderCellDef mat-sort-header>Período</th>
+<td mat-cell *matCellDef="let aluno"> {{aluno.periodo}} </td>
+</ng-container>
 
 
+<!-- Status Column -->
+<ng-container matColumnDef="acoes">
+<th mat-header-cell *matHeaderCellDef mat-sort-header>Detalhes</th>
+<td mat-cell *matCellDef="let aluno">
+<a [routerLink]="['/detalhamento', aluno.id]" routerLinkActive="router-link-active" >
+  <img class="myimage"
+  src="http://localhost:5000/img/{{aluno.nomeFoto}}"
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  style="  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 0;
+  padding: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;"
+  />
+</a>
+</td>
+</ng-container>
+
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

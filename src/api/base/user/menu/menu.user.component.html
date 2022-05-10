@@ -1,5 +1,5 @@
-<ul [ngSwitch]="userLogado()" class="nav navbar-nav navbar-right">
-        <li *ngSwitchCase="false"><a  class="nav-link text-light" [routerLink]="['/entrar']" style="cursor: pointer;">Entrar</a></li>
+<div [ngSwitch]="userLogado()" class="nav navbar-nav navbar-right">
+        <li *ngSwitchCase="false"><a  class="nav-link text-light" [routerLink]="['/entrar']" style="cursor: pointer;">Login</a></li>
         <li *ngSwitchCase="true"><a  class="nav-link text-light">{{ saudacao }}</a></li>
         <li *ngSwitchCase="true"><a  class="nav-link text-light" (click)="logout()" style="cursor: pointer;">Logoff</a></li>
-</ul>
+</div>

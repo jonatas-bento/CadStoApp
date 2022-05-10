@@ -1,30 +1,202 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs" style="margin-top: 20px;">
   <li [ngbNavItem]="1">
     <a ngbNavLink>1º Bimestre</a>
-    <ng-template ngbNavContent>
-      <app-alunos></app-alunos>
-    </ng-template>
+    <ng-template ngbNavContent *ngIf="primeiroBimestre">
+      <h1>Alunos</h1>
+
+    <p>Segue a lista de alunos:</p>
+
+    <p *ngIf="!alunos"><em>carregando...</em></p>
+    <ngx-spinner *ngIf="!alunos"
+    bdColor = "rgba(0, 0, 0, 0.8)"
+    size = "medium"
+    color = "#fff"
+    type = "ball-scale-multiple"
+    [fullScreen] = "true">
+      <p style="color: white" >
+      Carregando...
+      </p>
+    </ngx-spinner>
+
+
+
+
+    <table mat-table  [dataSource]="dataPrimeiro"  class="table-striped mat-elevation-z8"
+          [hidden]="!dataPrimeiro" style="width: 100%;">
+          matSort (matSortChange)="gerarBoletimPrimeiroBimestre()"
+          matSortActive="{{defaultSortColumn}}"
+          matSortDirection="asc"
+
+      <!-- Id Column
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let boletim"> {{boletim.notas.id}} </td>
+      </ng-container> -->
+
+      <!-- Aluno Column -->
+    <ng-container matColumnDef="aluno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+      <td mat-cell *matCellDef="let boletim">
+        {{boletim.aluno}}
+      </td>
+    </ng-container>
+
+    <!-- Disciplina Column -->
+    <ng-container matColumnDef="disciplina">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Disciplina Avaliada</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.disciplina}} </td>
+    </ng-container>
+
+    <!-- Av1 Column -->
+    <ng-container matColumnDef="av1">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Av1</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.av1}} </td>
+    </ng-container>
+
+    <!-- Av2 Column -->
+    <ng-container matColumnDef="av2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Av2</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.av2}} </td>
+    </ng-container>
+
+    <!-- Bonus Column -->
+    <ng-container matColumnDef="av3">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Av3</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.av3}} </td>
+    </ng-container>
+
+    <!-- Final Grade Column -->
+    <ng-container matColumnDef="notaFinal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nota Final</th>
+      <td mat-cell *matCellDef="let boletim"> {{media((boletim.av1),(boletim.av2),(boletim.av3))}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let boletim"> {{statusFinal(media((boletim.av1),(boletim.av2),(boletim.av3)))}} </td>
+    </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ações</th>
+        <td mat-cell *matCellDef="let boletim">
+          <a [routerLink]="['/aluno', boletim.id]" routerLinkActive="router-link-active" >
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </a>
+          </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </ng-template>
   </li>
   <li [ngbNavItem]="2">
     <a ngbNavLink>2º Bimestre</a>
-    <ng-template ngbNavContent>
-      <app-oitavoPeriodo></app-oitavoPeriodo>
+      <ng-template ngbNavContent *ngIf="segundoBimestre">
+
+        <h1>Alunos</h1>
+
+        <p>Segue a lista de alunos:</p>
+
+        <p *ngIf="!alunos"><em>carregando...</em></p>
+        <ngx-spinner *ngIf="!alunos"
+        bdColor = "rgba(0, 0, 0, 0.8)"
+        size = "medium"
+        color = "#fff"
+        type = "ball-scale-multiple"
+        [fullScreen] = "true">
+          <p style="color: white" >
+          Carregando...
+          </p>
+        </ngx-spinner>
+
+        <table mat-table  [dataSource]="dataSegundo"  class="table-striped mat-elevation-z8"
+        [hidden]="!dataSegundo" style="width: 100%;">
+        matSort (matSortChange)="gerarBoletimSegundoBimestre()"
+        matSortActive="{{defaultSortColumn}}"
+        matSortDirection="asc"
+
+    <!-- Id Column
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.notas.alunoId}} </td>
+    </ng-container> -->
+
+    <!-- Aluno Column -->
+    <ng-container matColumnDef="aluno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+      <td mat-cell *matCellDef="let boletim">
+        {{boletim.aluno}}
+      </td>
+    </ng-container>
+
+    <!-- Disciplina Column -->
+    <ng-container matColumnDef="disciplina">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Disciplina Avaliada</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.disciplina}} </td>
+    </ng-container>
+
+    <!-- Av1 Column -->
+    <ng-container matColumnDef="av1">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Av1</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.av1}} </td>
+    </ng-container>
+
+    <!-- Av2 Column -->
+    <ng-container matColumnDef="av2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Av2</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.av2}} </td>
+    </ng-container>
+
+    <!-- Bonus Column -->
+    <ng-container matColumnDef="av3">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Av3</th>
+      <td mat-cell *matCellDef="let boletim"> {{boletim.av3}} </td>
+    </ng-container>
+
+    <!-- Final Grade Column -->
+    <ng-container matColumnDef="notaFinal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nota Final</th>
+      <td mat-cell *matCellDef="let boletim"> {{media((boletim.av1),(boletim.av2),(boletim.av3))}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let boletim"> {{statusFinal(media((boletim.av1),(boletim.av2),(boletim.av3)))}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ações</th>
+      <td mat-cell *matCellDef="let boletim">
+        <a [routerLink]="['/aluno', boletim.id]" routerLinkActive="router-link-active" >
+          <fa-icon [icon]="faEdit"></fa-icon>
+        </a>
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
-    <a ngbNavLink>Three</a>
+    <a ngbNavLink>Avaliações</a>
     <ng-template ngbNavContent>
-      <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-        Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-        Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
-        egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
-        tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
-        magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
-        neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+      <p>Estamos fornecendo nossos estudos e avaliações na modalidade à Distância. Os dados e avaliações
+        são majoritariamente na plataforma moodle. Esse recurso, serve para viabilizar os dados dos Alunos
+        de maneira a que o controle esteja disponível à secretaria.
+      </p>
     </ng-template>
   </li>
 </ul>
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-<pre>Active: {{ active }}</pre>
+<!-- <pre>Bimestre: {{ active }}</pre> -->

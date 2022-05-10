@@ -33,7 +33,6 @@ export class UserService extends BaseService {
     }
 
     persistirUserApp(response: any){
-      debugger;
         localStorage.setItem('app.token', response.accessToken);
         localStorage.setItem('app.user', JSON.stringify(response.userToken));
     }

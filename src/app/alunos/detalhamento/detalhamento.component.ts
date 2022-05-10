@@ -63,14 +63,15 @@ loadData(){
 }
 
 notasAvailable(){
+  debugger;
   this.notasService.getAllNotas()
   .subscribe((result) =>{
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.posArr = this.id-1;
+    this.posArr = this.id;
     this.nota = result;
-    this.av1 = this.nota[this.posArr].aV1;
-    this.av2 = this.nota[this.posArr].aV2;
-    this.av3 = this.nota[this.posArr].aV3;
+    this.av1 = this.nota[this.posArr].av1;
+    this.av2 = this.nota[this.posArr].av2;
+    this.av3 = this.nota[this.posArr].av3;
     this.notaFinal = this.av1+this.av2+this.av3;
     this.status = (this.notaFinal >= 6) ?
           "Aprovado"  :
@@ -81,7 +82,6 @@ notasAvailable(){
   disciplinasAvailable(){
     this.disciplinasService.getAllDisciplinas()
     .subscribe((result) =>{
-      debugger;
       this.disciplina = result;
       //find the best way to capture the id number from de discipline
       this.nomeDisciplina = this.disciplina[this.id].nome;

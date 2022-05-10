@@ -11,9 +11,9 @@ import { Aluno } from '../aluno';
   styleUrls: ['./segundoPeriodo.component.scss']
 })
 export class SegundoPeriodoComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'nome', 'periodo', 'av1', 'av2', 'bonus',
-  'notaFinal', 'status'];
-  alunos: Aluno[];
+  public displayedColumns: string[] = ['nome', 'periodo', 'acoes'];
+  alunosSegundoPeriodo: Aluno[];
+  naoContemAlunos = false;
 
   constructor(private http: HttpClient,
     @Inject ('BASE_URL') private baseUrl: string,
@@ -21,27 +21,22 @@ export class SegundoPeriodoComponent implements OnInit {
     private alunosService: AlunosService) { }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData(){
     this.spinner.show();
     this.alunosService.getAlunos()
-    .pipe(map(alunos => alunos.filter(aluno => aluno.Periodo == "2º")))
-    .subscribe(result =>
-        this.alunos = result),
-        (error: any) => console.error(error);
-        () => this.spinner.hide();
+    .pipe(map(alunos => alunos.filter(aluno => aluno.periodo == "2º")))
+    .subscribe(result =>{
+      debugger;
+      console.log(result);
+      if (result.length == 0){
+        this.naoContemAlunos = true;
+      } else{
+        this.alunosSegundoPeriodo = result;
+      }
+    });
   }
 
-  media(a: number, b: number, c?: number) {
-    let resultado = a+b+c;
-    return resultado > 10 ? resultado = 10 : resultado;
-  }
-
-  status(media: number){
-    if(!media)
-    return '-';
-    if(media >= 6){
-      return 'APROVADO';
-    } else {
-      return 'REPROVADO';
-    }
-  }
 }

@@ -5,6 +5,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlunosService } from '../../../alunos.service';
 import { Aluno } from '../aluno';
 import { Notas } from '../../interfaces/Notas';
+import { BoletimService } from '../../../services/boletim.service';
+import { Boletim } from '../../interfaces/Boletim';
+import { faAddressBook, faEdit } from '@fortawesome/free-regular-svg-icons';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-porBimestre',
@@ -13,29 +17,38 @@ import { Notas } from '../../interfaces/Notas';
 })
 export class PorBimestreComponent implements OnInit {
   public radioGroupForm: FormGroup;
+  public displayedColumns: string[] = ['aluno', 'disciplina', 'av1', 'av2', 'av3',
+   'notaFinal', 'status', 'acoes'];
+   faEdit = faEdit;
+   faAddressBook = faAddressBook;
   id?: number;
+  active = 3;
+  dataPrimeiro: any;
+  dataSegundo: any;
+
   alunos: Aluno[];
-  active = 1;
-  nota: Notas;
-  av1: number;
-  av2: number;
-  av3: number;
-  notaFinal: number;
-  status: string;
-  posArr: number;
+  notas: Notas[];
+  notasPrimeiroBimestre: Notas[];
+  notasSegundoBimestre: Notas[];
+  segundoBimestre: boolean = false;
+  primeiroBimestre: boolean = false;
 
 
   constructor(private formBuilder: FormBuilder,
     private alunoService: AlunosService,
     private notasService: NotasService,
+    private boletimService: BoletimService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.gerarBoletimPrimeiroBimestre();
+    this.loadData();
+    this.gerarBoletimSegundoBimestre();
     this.radioGroupForm = this.formBuilder.group({
       'model': 1
     });
-    this.loadData();
-    this.notasAvailable();
+
   }
 
   loadData(){
@@ -45,19 +58,39 @@ export class PorBimestreComponent implements OnInit {
     }, (error: any) => console.log(error));
   }
 
-  notasAvailable(){
-    this.notasService.getAllNotas()
-    .subscribe((result) =>{
-      this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-      this.posArr = this.id-1;
-      this.nota = result;
-      this.av1 = this.nota[this.posArr].aV1;
-      this.av2 = this.nota[this.posArr].aV2;
-      this.av3 = this.nota[this.posArr].aV3;
-      this.notaFinal = this.av1+this.av2+this.av3;
-      this.status = (this.notaFinal >= 6) ?
-            "Aprovado"  :
-            "Reprovado";
+  gerarBoletimPrimeiroBimestre(){
+    debugger;
+    this.boletimService.getAllBoletins()
+    .pipe(map(dados => dados.filter(dado => dado.bimestre == 1)))
+    .subscribe((result: any) => {
+      this.dataPrimeiro = result;
+      this.primeiroBimestre = true;
       });
+   }
+
+   gerarBoletimSegundoBimestre(){
+     debugger;
+     this.boletimService.getAllBoletins()
+    .pipe(map(dados => dados.filter(dado => dado.bimestre == 2)))
+     .subscribe((result: any) => {
+      this.dataSegundo = result;
+      this.segundoBimestre = true;
+    })
+   }
+
+  media(a: number, b: number, c?: number) {
+    let resultado = a+b+c;
+    return resultado > 10 ? resultado = 10 : resultado;
+  }
+
+  statusFinal(media: any){
+    if(!media)
+    return '-';
+    if(media >= 6){
+      return 'APROVADO';
+    } else {
+      return 'REPROVADO';
     }
+  }
+
 }

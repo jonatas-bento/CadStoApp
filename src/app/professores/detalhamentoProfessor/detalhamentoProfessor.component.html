@@ -1,0 +1,108 @@
+<div class="html">
+  <div class="body">
+
+
+<div class="left-side">
+  <figure class="avatar">
+  <img class="myimage"
+  src="http://localhost:5000/img/{{this.nomeFoto}}"
+  title="Minha Imagem de perfil"
+  />
+  </figure>
+  <h2 style="background: lightsalmon;
+  color: currentColor;
+  font-size: 1rem;
+  text-align: center;
+  margin: 5px;
+  padding: 2px;
+  border-radius: 5px;">Informações Acadêmicas</h2>
+  <p style="text-align: center;">{{this.descricao}}</p>
+  <h2 style="    background: lightsalmon;
+  color: currentColor;
+  font-size: 1rem;
+  text-align: center;
+  margin: 5px;
+  margin-bottom: 10px;
+  padding: 2px;
+  border-radius: 5px;">Disciplinas Ativas</h2>
+  <p style="text-align: center; color: tomato;" *ngFor="let disciplina of disciplinas"><a href="">{{disciplina.nome}}</a></p>
+
+  <button class="btn btn" style="background: lightsalmon;
+  color: currentColor;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 5px;
+  margin-left: 23px;
+  padding: 2px;
+  border-radius: 5px;"
+  [routerLink]="['/professores']">Voltar à Lista</button>
+</div>
+
+<div class="right-side">
+  <header>
+      <h1>{{this.nome}}</h1>
+      <h6 style="padding-top: 20px;"> - {{this.data}} - </h6>
+  </header>
+
+  <div class="content">
+      <aside class="info-box">
+          <h2>Comentários</h2>
+          <p style="color: black;">
+              teste
+          </p>
+      </aside>
+      <aside>
+          <h2 style="background: lightsalmon;
+          color: currentColor;
+          font-size: 1rem;
+          text-align: center;
+          margin: 5px;
+          padding: 2px;
+          border-radius: 5px;">Avaliações</h2>
+          <div class="grades" style="display: flex; justify-content: space-evenly;">
+          <!-- <p style="color: black;">
+              Nota da Av1 =
+          </p>
+          <p style="margin-right: 50px; margin-left: 50px; color: black;">
+              Nota da Av2 =
+          </p> -->
+          <!-- <button class="btn btn">Nota da AV1 = {{this.av1}}</button>
+          <button class="btn btn">Nota da AV2 = {{this.av2}}</button>
+          <button class="btn btn">Nota da AV3 = {{this.av3}}</button> -->
+          <!-- <p style="color: black;">
+              Nota da AV3 =
+          </p> -->
+        </div>
+      </aside>
+      <aside class="info-box">
+          <h2>Média Final e Status</h2>
+        <!-- <div class="grades" style="display: flex; justify-content: space-evenly;">
+
+          <button class="btn btn-primary" (click)="notasAvailable()">Nota Final: </button>
+          <label for="notafinal" *ngIf="nota">Sua média final foi: {{this.notaFinal}}</label>
+          <button class="btn btn">Status: {{this.status}}</button>
+        </div> -->
+        </aside>
+        <aside class="info-box">
+          <h2 style="background: lightsalmon;
+          color: currentColor;
+          font-size: 1rem;
+          text-align: center;
+          margin: 5px;
+          padding: 2px;
+          border-radius: 5px;">Participação nos fóruns</h2>
+          <p>
+            .....
+          </p>
+        </aside>
+        <aside class="info-box">
+          <h2>Participação em Sala de Aula</h2>
+          <p>
+            ......
+          </p>
+        </aside>
+
+
+</div>
+</div>
+</div>
