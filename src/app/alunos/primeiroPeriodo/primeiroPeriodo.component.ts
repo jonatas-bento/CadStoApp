@@ -10,9 +10,10 @@ import { Aluno } from '../aluno';
   styleUrls: ['./primeiroPeriodo.component.scss']
 })
 export class PrimeiroPeriodoComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'nome', 'periodo', 'av1', 'av2', 'bonus',
-  'notaFinal', 'status'];
-  public alunos: Aluno[];
+  public displayedColumns: string[] = ['nome', 'periodo', 'acoes'];
+  public alunosPrimeiroPeriodo: Aluno[];
+  periodo: string;
+  naoContemAlunos = false;
 
   constructor(private http: HttpClient,
     private alunosService: AlunosService,
@@ -26,11 +27,18 @@ export class PrimeiroPeriodoComponent implements OnInit {
   loadData(){
     this.spinner.show();
     this.alunosService.getAlunos()
-    .pipe(map(alunos => alunos.filter(aluno => aluno.Periodo == "1º")))
-    .subscribe(result =>
-        this.alunos = result),
-        (error: any) => console.error(error);
-    () => this.spinner.hide();
+    .pipe(map(alunos => alunos.filter(aluno => aluno.periodo == "1º")))
+    .subscribe(result =>{
+      debugger;
+      console.log(result);
+
+      if (result.length == 0){
+        this.naoContemAlunos = true;
+      } else{
+        this.alunosPrimeiroPeriodo = result;
+      }
+    },
+    () => this.spinner.hide());
   }
 
   media(a: number, b: number, c?: number) {

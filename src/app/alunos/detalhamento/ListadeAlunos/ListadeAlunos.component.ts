@@ -11,7 +11,7 @@ import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 })
 export class ListadeAlunosComponent implements OnInit {
 public alunos: Aluno[];
-public displayedColumns: string[] = ['nome', 'periodo', 'acoes'];
+public displayedColumns: string[] = ['matricula', 'nome', 'periodo', 'acoes'];
 faEdit = faEdit;
 faAdressBook = faAddressBook;
   constructor(private alunosService: AlunosService,

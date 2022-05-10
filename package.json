@@ -27,8 +27,10 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^4.5.0",
     "ngx-spinner": "^11.0.2",
+    "ngx-toastr": "^13.2.1",
     "oidc-client": "^1.11.5",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

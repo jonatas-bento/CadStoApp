@@ -18,6 +18,15 @@ constructor(
   @Inject('BASE_URL') private baseUrl: string) { super()
 }
 
+
+public addNota(nota: any): Observable<Notas>{
+  return this.http.post<Notas>(this.baseUrl + 'api/notas', nota, super.ObterAuthHeaderJson());
+}
+
+public editNota(nota: any, id: number): Observable<Notas>{
+  return this.http.put<Notas>(this.baseUrl + 'api/notas/' + id, nota, super.ObterAuthHeaderJson());
+}
+
 public getAllNotas(): Observable<any>{
   return this.http.get<Notas[]>(this.baseUrl + 'api/notas', super.ObterAuthHeaderJson());
 }

@@ -32,8 +32,10 @@ export class EditComponent extends BaseFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
+      matricula: new FormControl('', Validators.required),
       nome: new FormControl('', Validators.required),
       periodo: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
       nomeFoto: new FormControl('', Validators.required)
     });
 
@@ -70,7 +72,9 @@ export class EditComponent extends BaseFormComponent implements OnInit {
     const aluno = (this.id) ? this.aluno: <Aluno>{};
 
     aluno.nome = this.form.get("nome").value;
+    aluno.matricula = this.form.get("matricula").value;
     aluno.periodo = this.form.get("periodo").value;
+    aluno.email = this.form.get("email").value;
     aluno.nomeFoto = this.form.get("nomeFoto").value;
 
     //Edit Mode
@@ -99,7 +103,3 @@ export class EditComponent extends BaseFormComponent implements OnInit {
     }
 
 }
-
-
-
-

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    private toastService: ToastrService) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -43,11 +45,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSaveComplete(response: any) {
+    this.toastService.success("logando com sucesso", "Boas vindas")
     this.userService.persistirUserApp(response);
     this.router.navigateByUrl('/');
   }
 
   onError(fail: any) {
+    this.toastService.error("usuário ou senha estão errados", "Tente novamente")
     this.errors = fail.error.errors;
   }
 
