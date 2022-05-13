@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  root: "http://localhost:5000/",
+  root: "http://cadsto.com/",
   unauthorizedRedirectURL: "http://localhost:4200/entrar",
   homePageWithoutLogged: "http://localhost:4200"
 };
