@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   root: "http://cadsto.com/",
-  unauthorizedRedirectURL: "http://localhost:4200/entrar",
-  homePageWithoutLogged: "http://localhost:4200"
+  unauthorizedRedirectURL: "http://cadsto.com/entrar",
+  homePageWithoutLogged: "http://cadsto.com"
 };
 
 /*
