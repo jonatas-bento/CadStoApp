@@ -25,7 +25,7 @@ export class TokenInterceptorService implements HttpInterceptor{
 
           } else if([403].some(e => e === err.status)){
             this.toastrService.error("Usuário não está autorizado a acessar", "Usuário não autorizado");
-            window.location.href = "http://cadsto.com/entrar";
+            window.location.href = environment.unauthorizedRedirectURL;
           } else if ([500].some(i => i === err.status)){
             this.toastrService.error("Erro interno, verifique o banco de dados ou a conexão com o servidor!", "Erro interno")
             setTimeout(()=>{
