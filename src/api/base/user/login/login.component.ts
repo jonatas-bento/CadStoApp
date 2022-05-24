@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    debugger;
     this.spinner.show();
     if (this.userForm.valid && this.userForm.dirty) {
 

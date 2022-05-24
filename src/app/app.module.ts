@@ -1,3 +1,5 @@
+import { AlunosParaBoletimComponent } from './alunos/porAluno/AlunosParaBoletim/AlunosParaBoletim.component';
+import { PorAlunoComponent } from './alunos/porAluno/porAluno.component';
 import { DetalhamentoProfessorComponent } from './professores/detalhamentoProfessor/detalhamentoProfessor.component';
 import { EditProfessoresComponent } from './professores/editProfessores/editProfessores.component';
 import { ProfessoresService } from './../services/professores.service';
@@ -72,6 +74,8 @@ import { MatTableModule } from '@angular/material/table';
     LoginComponent,
     MenuUserComponent,
     ProfessoresComponent,
+    PorAlunoComponent,
+    AlunosParaBoletimComponent,
       LancamentoNotasComponent
    ],
   imports: [

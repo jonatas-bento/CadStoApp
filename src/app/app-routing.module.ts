@@ -1,3 +1,4 @@
+import { AlunosParaBoletimComponent } from './alunos/porAluno/AlunosParaBoletim/AlunosParaBoletim.component';
 import { LancamentoNotasComponent } from './lancamentoNotas/lancamentoNotas.component';
 import { DetalhamentoProfessorComponent } from './professores/detalhamentoProfessor/detalhamentoProfessor.component';
 import { EditProfessoresComponent } from './professores/editProfessores/editProfessores.component';
@@ -18,6 +19,7 @@ import { DisciplinasComponent } from './disciplinas/disciplinas.component';
 import { PorBimestreComponent } from './alunos/porBimestre/porBimestre.component';
 import { TerceiroPeriodoComponent } from './alunos/terceiroPeriodo/terceiroPeriodo.component';
 import { ProfessoresComponent } from './professores/professores.component';
+import { PorAlunoComponent } from './alunos/porAluno/porAluno.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -38,7 +40,9 @@ const routes: Routes = [
   { path: 'disciplinas', component: DisciplinasComponent, pathMatch: 'full'},
   { path: 'listaAlunos', component: ListadeAlunosComponent, pathMatch: 'full'},
   { path: 'lancamentoNotas', component: LancamentoNotasComponent, pathMatch: 'full'},
-  { path: 'porBimestre', component: PorBimestreComponent, pathMatch: 'full'}
+  { path: 'porBimestre', component: PorBimestreComponent, pathMatch: 'full'},
+  { path: 'porAluno/:id', component: PorAlunoComponent, pathMatch: 'full'},
+  { path: 'porAluno', component: AlunosParaBoletimComponent, pathMatch: 'full'}
 
 ];
 
